@@ -1,1 +1,232 @@
-This is a page
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            text-align: center; /* Center align the body content */
+        }
+        .container {
+            width: 100%; /* Use 100% width */
+            margin: auto;
+            overflow: hidden;
+        }
+        header {
+            background: #50b3a2;
+            color: white;
+            padding-top: 30px;
+            padding-left: 20px;
+            padding-right: 20px;
+            min-height: 70px;
+            border-bottom: #e8491d 3px solid;
+            text-align: center;
+        }
+        h2 {
+            margin-bottom: 10px; /* Reduced bottom margin for titles */
+        }
+        .introduction {
+            max-width: 800px; /* Adjust the width as needed */
+            margin: auto; /* This centers the content */
+            padding: 50px; /* Optional, for some internal spacing */
+        }
+        .video-row {
+            display: flex;
+            justify-content: center; /* Center videos in the row */
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin-top: 5px;
+            margin-bottom: 20px; /* Added for spacing */
+        }
+        .video {
+            flex: 0 0 auto;
+            width: 300px; /* Adjust width as needed */
+            margin: 10px;
+        }
+        video {
+            width: 100%;
+            height: auto;
+        }
+        .video p {
+            text-align: center;
+            margin-top: 10px;
+        }
+        
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Beyond Imitation: Masked Humanoid Controller for Under-specified Control and Planning</h1>
+        <p style="font-size: small; color: #9a6127;">Under Submission *</p>
+    </header>
+
+    <div class="container">
+        <section id="introduction" class="introduction">
+            <h2>Abstract</h2>
+            <p>We consider the problem of controlling humanoid characters in simulated-physics environments to perform diverse behaviors in a natural way that supports higher-level behavior-specification and planning objectives. This requires versatile policies that can handle sparse, under-specified directives across modalities while smoothly transitioning skills and recovering from failures. Current approaches for learning humanoid controllers capture some of these characteristics, but none achieve them all. For this purpose, we introduce the Masked Humanoid Controller (MHC), a novel approach combining multi-objective imitation learning on augmented and selectively masked demonstrations. MHC policies exhibit key capabilities of catch-up from failure states, tracking combined motion sequences, and completing motions from sparse multimodal guidance. We demonstrate these key capabilities for an MHC learned over a dataset of 87 diverse skills and showcase integration with planning frameworks to highlight MHC’s ability to solve new user-defined tasks without any finetuning.</p>
+        </section>
+
+
+        <section id="videos">
+
+            <!-- Joystick Raw Control and Imitation -->
+            <h2>Imitation</h2>
+            <div class="video-row">
+                <div class="video">
+                    <video controls>
+                        <source src="MHC Video Draft 0/kdenlive_MHC_imit_reallusion_easy.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p>Imitation: Reallution Motions</p>
+                </div>
+                <div class="video">
+                    <video controls>
+                        <source src="MHC Video Draft 0/kdenlive_MHC_imit_reallusion_hard.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p>Imitation: Hard Reallusion Motions</p>
+                </div>
+                <div class="video">
+                    <video controls>
+                        <source src="MHC Video Draft 0/kdenlive_MHC_imit_ase.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p>Imitation: ASE Rollout </p>
+                </div>
+            </div>
+            <!-- Additional videos for this category can be added here -->
+
+            <!-- Catchup -->
+            <h2>Catchup</h2>
+            <div class="video-row">
+                <div class="video">
+                    <video controls>
+                        <source src="MHC Video Draft 0/kdenlive_MHC_catchup_simple.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p>Catchup: Out of sync start</p>
+                </div>
+
+                <div class="video">
+                    <video controls>
+                        <source src="MHC Video Draft 0/kdenlive_MHC_catchup_perturbed_taunt.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p>Catchup: Random Perturbations</p>
+                </div>
+
+                <div class="video">
+                    <video controls>
+                        <source src="MHC Video Draft 0/kdenlive_MHC_catchup_zap_imit.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p>Catchup: Zap in the middle</p>
+                </div>
+                <!-- Additional videos for this category can be added here -->
+            </div>
+
+            <!-- Combine -->
+            <h2>Combine</h2>
+            <div class="video-row">
+                <div class="video">
+                    <video controls>
+                        <source src="MHC Video Draft 0/kdenlive_MHC_compose_easy.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p>Combine: Reallusion Motion</p>
+                </div>
+                <div class="video">
+                    <video controls>
+                        <source src="MHC Video Draft 0/kdenlive_MHC_compose_hard.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p>Combine: Hard Reallusion Motion</p>
+                </div>
+                <div class="video">
+                    <video controls>
+                        <source src="MHC Video Draft 0/kdenlive_MHC_root_upper_compose.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p>Combine: root command + upper body</p>
+                </div>
+                <!-- Additional videos for this category can be added here -->
+            </div>
+
+            <!-- Multimodal Inference -->
+            <h2>Multimodal Inference</h2>
+            <div class="video-row">
+
+                <div class="video">
+                    <video controls>
+                        <source src="MHC Video Draft 0/kdenlive_MHC_1Agent_Aayam_Video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p>Video 2 Motion</p>
+                </div>
+                <div class="video">
+                    <video controls>
+                        <source src="MHC Video Draft 0/kdenlive_MHC_text2motion_4clips.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p>Text 2 Motion</p>
+                </div>
+                <div class="video">
+                    <video controls>
+                        <source src="MHC Video Draft 0/kdenlive_MHC_1Agent_Pan_VR_clip2.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p>VR controllers</p>
+                </div>
+                <div class="video">
+                    <video controls>
+                        <source src="MHC Video Draft 0/kdenlive_MHC_1Agent_Pan_JoystickXbox.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p>Joystick Commands</p>
+                </div>
+                <!-- Additional videos for this category can be added here -->
+            </div>
+
+            <!-- Downstream Planning -->
+            <h2>Downstream Planning</h2>
+            <div class="video-row">
+                <div class="video">
+                    <video controls>
+                        <source src="MHC Video Draft 0/kdenlive_MHC_1Agent_FSM_diverse.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p>FSM - Diverse</p>
+                </div>
+                <div class="video">
+                    <video controls>
+                        <source src="MHC Video Draft 0/kdenlive_MHC_1Agent_DAC_Discount.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p>DAC - Different Discount Factor Objective</p>
+                </div>
+                <div class="video">
+                    <video controls>
+                        <source src="MHC Video Draft 0/kdenlive_MHC_1Agent_DAC_NegReward.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p>DAC - Different Reward Objective</p>
+                </div>
+                <div class="video">
+                    <video controls>
+                        <source src="MHC Video Draft 0/kdenlive_MHC_1Agent_DAC_Safe.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p>DAC - Safety Objective</p>
+                </div>
+                <!-- Additional videos for this category can be added here -->
+            </div>
+
+            <!-- Other categories and videos can be added following the same structure -->
+
+        </section>
+    </div>
+</body>
+</html>
