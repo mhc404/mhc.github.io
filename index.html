@@ -59,14 +59,14 @@
 </head>
 <body>
     <header>
-        <h1>Beyond Imitation: Masked Humanoid Controller for Under-specified Control and Planning</h1>
+        <h1>Generating Physically Realistic and Directable Human Motions from Multi-Modal Inputs</h1>
         <p style="font-size: small; color: #9a6127;">Under Submission *</p>
     </header>
 
     <div class="container">
         <section id="introduction" class="introduction">
             <h2>Abstract</h2>
-            <p>We consider the problem of controlling humanoid characters in simulated-physics environments to perform diverse behaviors in a natural way that supports higher-level behavior-specification and planning objectives. This requires versatile policies that can handle sparse, under-specified directives across modalities while smoothly transitioning skills and recovering from failures. Current approaches for learning humanoid controllers capture some of these characteristics, but none achieve them all. For this purpose, we introduce the Masked Humanoid Controller (MHC), a novel approach combining multi-objective imitation learning on augmented and selectively masked demonstrations. MHC policies exhibit key capabilities of catch-up from failure states, tracking combined motion sequences, and completing motions from sparse multimodal guidance. We demonstrate these key capabilities for an MHC learned over a dataset of 87 diverse skills and showcase integration with planning frameworks to highlight MHC’s ability to solve new user-defined tasks without any finetuning.</p>
+            <p>This work focuses on generating realistic, physically-based human behaviors from multi-modal inputs, which may only partially specify the desired motion. For example, the input may come from a VR controller providing arm motion and body velocity, partial key-point animation, computer vision applied to videos, or even higher-level motion goals. This requires a versatile low-level humanoid controller that can handle such sparse, under-specified guidance, seamlessly switch between skills, and recover from failures. Current approaches for learning humanoid controllers from demonstration data capture some of these characteristics, but none achieve them all. To this end, we introduce the Masked Humanoid Controller (MHC), a novel approach that applies multi-objective imitation learning on augmented and selectively masked motion demonstrations. The training methodology results in an MHC that exhibits the key capabilities of \textit{catch-up} to out-of-sync input commands, \textit{combining} elements from multiple motion sequences, and \textit{completing} unspecified parts of motions from sparse multimodal input. We demonstrate these key capabilities for an MHC learned over a dataset of 87 diverse skills and showcase different multi-modal use cases, including integration with planning frameworks to highlight MHC’s ability to solve new user-defined tasks without any finetuning. </p>
         </section>
 
 
