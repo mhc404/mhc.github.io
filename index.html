@@ -1,232 +1,445 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            text-align: center; /* Center align the body content */
-        }
-        .container {
-            width: 100%; /* Use 100% width */
-            margin: auto;
-            overflow: hidden;
-        }
-        header {
-            background: #50b3a2;
-            color: white;
-            padding-top: 30px;
-            padding-left: 20px;
-            padding-right: 20px;
-            min-height: 70px;
-            border-bottom: #e8491d 3px solid;
-            text-align: center;
-        }
-        h2 {
-            margin-bottom: 10px; /* Reduced bottom margin for titles */
-        }
-        .introduction {
-            max-width: 800px; /* Adjust the width as needed */
-            margin: auto; /* This centers the content */
-            padding: 50px; /* Optional, for some internal spacing */
-        }
-        .video-row {
-            display: flex;
-            justify-content: center; /* Center videos in the row */
-            flex-wrap: nowrap;
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-            margin-top: 5px;
-            margin-bottom: 20px; /* Added for spacing */
-        }
-        .video {
-            flex: 0 0 auto;
-            width: 300px; /* Adjust width as needed */
-            margin: 10px;
-        }
-        video {
-            width: 100%;
-            height: auto;
-        }
-        .video p {
-            text-align: center;
-            margin-top: 10px;
-        }
-        
-    </style>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Generating Physically Realistic and Directable Human Motions from Multi-Modal Inputs">
+  <meta name="keywords" content="Motion Generation">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Generating Physically Realistic and Directable Human Motions from Multi-Modal Inputs</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script> -->
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
 </head>
 <body>
-    <header>
-        <h1>The Masked Humanoid Controller (MHC): Generating Physically Realistic and Directable Human Motions from Multi-Modal Inputs</h1>
-        <p style="font-size: small; color: #9a6127;">Under Submission *</p>
-    </header>
-
-    <div class="container">
-        <section id="introduction" class="introduction">
-            <h2>Abstract</h2>
-            <p>This work focuses on generating realistic, physically-based human behaviors from multi-modal inputs, which may only partially specify the desired motion. For example, the input may come from a VR controller providing arm motion and body velocity, partial key-point animation, computer vision applied to videos, or even higher-level motion goals. This requires a versatile low-level humanoid controller that can handle such sparse, under-specified guidance, seamlessly switch between skills, and recover from failures. Current approaches for learning humanoid controllers from demonstration data capture some of these characteristics, but none achieve them all. To this end, we introduce the Masked Humanoid Controller (MHC), a novel approach that applies multi-objective imitation learning on augmented and selectively masked motion demonstrations. The training methodology results in an MHC that exhibits the key capabilities of \textit{catch-up} to out-of-sync input commands, \textit{combining} elements from multiple motion sequences, and \textit{completing} unspecified parts of motions from sparse multimodal input. We demonstrate these key capabilities for an MHC learned over a dataset of 87 diverse skills and showcase different multi-modal use cases, including integration with planning frameworks to highlight MHC’s ability to solve new user-defined tasks without any finetuning. </p>
-        </section>
 
 
-        <section id="videos">
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Generating Physically Realistic and Directable Human Motions from Multi-Modal Inputs</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="">Anonymous Authors</a></span>
 
-            <!-- Joystick Raw Control and Imitation -->
-            <h2>Imitation</h2>
-            <div class="video-row">
-                <div class="video">
-                    <video controls>
-                        <source src="MHC Video Draft 0/kdenlive_MHC_imit_reallusion_easy.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <p>Imitation: Reallution Motions</p>
-                </div>
-                <div class="video">
-                    <video controls>
-                        <source src="MHC Video Draft 0/kdenlive_MHC_imit_reallusion_hard.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <p>Imitation: Hard Reallusion Motions</p>
-                </div>
-                <div class="video">
-                    <video controls>
-                        <source src="MHC Video Draft 0/kdenlive_MHC_imit_ase.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <p>Imitation: ASE Rollout </p>
-                </div>
-            </div>
-            <!-- Additional videos for this category can be added here -->
+          </div>
 
-            <!-- Catchup -->
-            <h2>Catchup</h2>
-            <div class="video-row">
-                <div class="video">
-                    <video controls>
-                        <source src="MHC Video Draft 0/kdenlive_MHC_catchup_simple.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <p>Catchup: Out of sync start</p>
-                </div>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Under Submission</span>
+          </div>
 
-                <div class="video">
-                    <video controls>
-                        <source src="MHC Video Draft 0/kdenlive_MHC_catchup_perturbed_taunt.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <p>Catchup: Random Perturbations</p>
-                </div>
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="./MHC_ECCV_2024.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
 
-                <div class="video">
-                    <video controls>
-                        <source src="MHC Video Draft 0/kdenlive_MHC_catchup_zap_imit.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <p>Catchup: Zap in the middle</p>
-                </div>
-                <!-- Additional videos for this category can be added here -->
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code (Comming soon)</span>
+                  </a>
+              </span>
+
             </div>
 
-            <!-- Combine -->
-            <h2>Combine</h2>
-            <div class="video-row">
-                <div class="video">
-                    <video controls>
-                        <source src="MHC Video Draft 0/kdenlive_MHC_compose_easy.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <p>Combine: Reallusion Motion</p>
-                </div>
-                <div class="video">
-                    <video controls>
-                        <source src="MHC Video Draft 0/kdenlive_MHC_compose_hard.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <p>Combine: Hard Reallusion Motion</p>
-                </div>
-                <div class="video">
-                    <video controls>
-                        <source src="MHC Video Draft 0/kdenlive_MHC_root_upper_compose.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <p>Combine: root command + upper body</p>
-                </div>
-                <!-- Additional videos for this category can be added here -->
-            </div>
-
-            <!-- Multimodal Inference -->
-            <h2>Multimodal Inference</h2>
-            <div class="video-row">
-
-                <div class="video">
-                    <video controls>
-                        <source src="MHC Video Draft 0/kdenlive_MHC_1Agent_Aayam_Video.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <p>Video 2 Motion</p>
-                </div>
-                <div class="video">
-                    <video controls>
-                        <source src="MHC Video Draft 0/kdenlive_MHC_text2motion_4clips.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <p>Text 2 Motion</p>
-                </div>
-                <div class="video">
-                    <video controls>
-                        <source src="MHC Video Draft 0/kdenlive_MHC_1Agent_Pan_VR_clip2.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <p>VR controllers</p>
-                </div>
-                <div class="video">
-                    <video controls>
-                        <source src="MHC Video Draft 0/kdenlive_MHC_1Agent_Pan_JoystickXbox.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <p>Joystick Commands</p>
-                </div>
-                <!-- Additional videos for this category can be added here -->
-            </div>
-
-            <!-- Downstream Planning -->
-            <h2>Higher-Level Task Specification</h2>
-            <div class="video-row">
-                <div class="video">
-                    <video controls>
-                        <source src="MHC Video Draft 0/kdenlive_MHC_1Agent_FSM_diverse.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <p>FSM - Diverse</p>
-                </div>
-                <div class="video">
-                    <video controls>
-                        <source src="MHC Video Draft 0/kdenlive_MHC_1Agent_DAC_Discount.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <p>DAC - Different Discount Factor Objective</p>
-                </div>
-                <div class="video">
-                    <video controls>
-                        <source src="MHC Video Draft 0/kdenlive_MHC_1Agent_DAC_NegReward.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <p>DAC - Different Reward Objective</p>
-                </div>
-                <div class="video">
-                    <video controls>
-                        <source src="MHC Video Draft 0/kdenlive_MHC_1Agent_DAC_Safe.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <p>DAC - Safety Objective</p>
-                </div>
-                <!-- Additional videos for this category can be added here -->
-            </div>
-
-            <!-- Other categories and videos can be added following the same structure -->
-
-        </section>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    
+    <div class="hero-body has-text-centered">
+        <img src = "./static/images/overview.png" height="80%"></img>
+        <p>Showcases generated human motions from multi-modal inputs: (A) VR device, (B) joystick controller, 
+          (C) video, and (D) text. Our proposed method, Masked Humanoid Controller (MHC), can generate physically 
+          realistic motions from a wide variety of muli-modal directives. </p>
+    </div>
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            This work focuses on generating realistic, physically-based human behaviors from multi-modal inputs, 
+            which may only partially specify the desired motion. For example, the input may come from a VR 
+            controller providing arm motion and body velocity, partial key-point animation, computer vision applied 
+            to videos, or even higher-level motion goals. This requires a versatile low-level humanoid controller 
+            that can handle such sparse, under-specified guidance, seamlessly switch between skills, and recover 
+            from failures.
+          </p>
+          <p>
+            Current approaches for learning humanoid controllers from demonstration data capture some of these 
+            characteristics, but none achieve them all. To this end, we introduce the Masked Humanoid Controller (MHC), 
+            a novel approach that applies multi-objective imitation learning on augmented and selectively masked 
+            motion demonstrations. The training methodology results in an MHC that exhibits the key capabilities 
+            of <i>catch-up</i> to out-of-sync input commands, <i>combining</i> elements from multiple motion 
+            sequences, and <i>completing</i> unspecified parts of motions from sparse multimodal input.
+          </p>
+          <p>
+            We demonstrate these key capabilities for an MHC learned over a dataset of 87 diverse skills and 
+            showcase different multi-modal use cases, including integration with planning frameworks to highlight 
+            MHC’s ability to solve new user-defined tasks without any finetuning.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+  </div>
+</section>
+
+
+<section class="section">
+
+  <div class="container is-max-desktop has-text-centered">
+
+    <h2 class="title is-3">Imitation</h2>
+
+    <div class="columns is-centered">
+
+      <div class="column">
+        <div class="content">
+          <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/kdenlive_MHC_imit_reallusion_easy.mp4"
+                    type="video/mp4">
+          </video>
+          <p>Imitation: Reallution Motions</p>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="columns is-centered">
+          <div class="column content">
+            <video id="matting-video" controls playsinline height="100%">
+              <source src="./static/videos/kdenlive_MHC_imit_reallusion_hard.mp4"
+                      type="video/mp4">
+            </video>
+            <p>Imitation: High Dynamic Reallusion Motions</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="columns is-centered">
+          <div class="column content">
+            <video id="matting-video" controls playsinline height="100%">
+              <source src="./static/videos/kdenlive_MHC_imit_ase.mp4"
+                      type="video/mp4">
+            </video>
+            <p>Imitation: ASE Rollout </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <br>
+
+  <div class="container is-max-desktop has-text-centered">
+
+    <h2 class="title is-3">Catchup</h2>
+
+    <div class="columns is-centered">
+
+      <div class="column">
+        <div class="content">
+          <video id="dollyzoom" controls playsinline height="100%">
+            <source src="./static/videos/kdenlive_MHC_catchup_simple.mp4"
+                    type="video/mp4">
+          </video>
+          <p>Catchup: Out of sync start</p>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="columns is-centered">
+          <div class="column content">
+            <video id="matting-video" controls playsinline height="100%">
+              <source src="./static/videos/kdenlive_MHC_catchup_perturbed_taunt.mp4"
+                      type="video/mp4">
+            </video>
+            <p>Catchup: Random Perturbations</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="columns is-centered">
+          <div class="column content">
+            <video id="matting-video" controls playsinline height="100%">
+              <source src="./static/videos/kdenlive_MHC_catchup_zap_imit.mp4"
+                      type="video/mp4">
+            </video>
+            <p>Catchup: Zap in the middle</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <br>
+
+  <div class="container is-max-desktop has-text-centered">
+
+    <h2 class="title is-3">Combine</h2>
+
+    <div class="columns is-centered">
+
+      <div class="column">
+        <div class="content">
+          <video id="dollyzoom" controls playsinline height="100%">
+            <source src="./static/videos/kdenlive_MHC_compose_easy.mp4"
+                    type="video/mp4">
+          </video>
+          <p>Combine: Reallusion Motion</p>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="columns is-centered">
+          <div class="column content">
+            <video id="matting-video" controls playsinline height="100%">
+              <source src="./static/videos/kdenlive_MHC_compose_hard.mp4"
+                      type="video/mp4">
+            </video>
+            <p>Combine: High Dynamic Reallusion Motions</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="columns is-centered">
+          <div class="column content">
+            <video id="matting-video" controls playsinline height="100%">
+              <source src="./static/videos/kdenlive_MHC_root_upper_compose.mp4"
+                      type="video/mp4">
+            </video>
+            <p>Combine: root command + upper body</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <br>
+
+  <div class="container is-max-desktop has-text-centered">
+
+    <h2 class="title is-3">Multimodal Inference</h2>
+
+    <div class="columns is-centered">
+
+      <div class="column">
+        <div class="content">
+          <video id="dollyzoom" controls playsinline height="100%">
+            <source src="./static/videos/kdenlive_MHC_1Agent_Aayam_Video.mp4"
+                    type="video/mp4">
+          </video>
+          <p>Video to Motion</p>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="columns is-centered">
+          <div class="column content">
+            <video id="matting-video" controls playsinline height="100%">
+              <source src="./static/videos/kdenlive_MHC_text2motion_4clips.mp4"
+                      type="video/mp4">
+            </video>
+            <p>Text to Motion</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  <div class="container is-max-desktop has-text-centered">
+
+    <div class="columns is-centered">
+
+      <div class="column">
+        <div class="content">
+          <video id="dollyzoom" controls playsinline height="100%">
+            <source src="./static/videos/kdenlive_MHC_1Agent_Pan_VR_clip2.mp4"
+                    type="video/mp4">
+          </video>
+          <p>VR controllers</p>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="columns is-centered">
+          <div class="column content">
+            <video id="matting-video" controls playsinline height="100%">
+              <source src="./static/videos/kdenlive_MHC_1Agent_Pan_JoystickXbox.mp4"
+                      type="video/mp4">
+            </video>
+            <p>Joystick Commands</p>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+  </div>
+
+  <br>
+
+  <div class="container is-max-desktop has-text-centered">
+
+    <h2 class="title is-3">Higher-Level Task Specification</h2>
+
+    <div class="columns is-centered">
+
+      <div class="column">
+        <div class="content">
+          <video id="dollyzoom" controls playsinline height="100%">
+            <source src="./static/videos/kdenlive_MHC_1Agent_FSM_diverse.mp4"
+                    type="video/mp4">
+          </video>
+          <p>FSM - Diverse</p>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="columns is-centered">
+          <div class="column content">
+            <video id="matting-video" controls playsinline height="100%">
+              <source src="./static/videos/kdenlive_MHC_1Agent_DAC_Discount.mp4"
+                      type="video/mp4">
+            </video>
+            <p>DAC - Different Discount Factor Objective</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  <div class="container is-max-desktop has-text-centered">
+
+    <div class="columns is-centered">
+
+      <div class="column">
+        <div class="content">
+          <video id="dollyzoom" controls playsinline height="100%">
+            <source src="./static/videos/kdenlive_MHC_1Agent_DAC_NegReward.mp4"
+                    type="video/mp4">
+          </video>
+          <p>DAC - Different Reward Objective</p>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="columns is-centered">
+          <div class="column content">
+            <video id="matting-video" controls playsinline height="100%">
+              <source src="./static/videos/kdenlive_MHC_1Agent_DAC_Safe.mp4"
+                      type="video/mp4">
+            </video>
+            <p>DAC - Safety Objective</p>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+  </div>
+
+
+</section>
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="./MHC_ECCV_2024.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This website is developed based on the <a href="https://nerfies.github.io/"> Nerfies</a> project page.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
 </body>
 </html>
